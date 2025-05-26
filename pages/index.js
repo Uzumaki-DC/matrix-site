@@ -1,10 +1,13 @@
-// pages/index.js
+import Head from "next/head";
+
 export default function Home() {
   return (
     <>
-      <header>
-        <h1>Matrix Site</h1>
-      </header>
+      <Head>
+        <title>Matrix Site Prototype</title>
+        <meta name="description" content="A Matrix-themed site demo" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
 
       <nav aria-label="Main navigation">
         <ul>
