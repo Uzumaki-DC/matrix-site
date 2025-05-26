@@ -22,3 +22,57 @@ nav a {
   padding: 0.75rem 1rem; /* larger hit area */
   margin: 0.25rem; /* spacing between links */
 }
+/* Flexbox nav */
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+  padding: 0.5rem;
+  background: #000;
+  margin: 0;
+}
+
+nav li {
+  margin: 0; /* reset any default list margins/padding */
+}
+
+nav a {
+  color: var(--matrix-green);
+  text-decoration: none;
+  padding: 0.5rem 1rem; /* expand touch target */
+  display: inline-block; /* so padding applies */
+}
+
+nav a:hover,
+nav a:focus {
+  text-decoration: underline;
+}
+
+main {
+  display: grid;
+  gap: 1rem;
+
+  /* by default, one column */
+  grid-template-columns: 1fr;
+}
+
+/* two columns on medium screens and up */
+@media (min-width: 640px) {
+  main {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* three columns on large screens and up */
+@media (min-width: 1024px) {
+  main {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+main > * {
+  background: #000; /* solid black background */
+  border: 1px solid var(--matrix-green);
+  padding: 1rem;
+  color: var(--matrix-green);
+}
