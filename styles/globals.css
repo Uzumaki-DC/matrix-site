@@ -94,6 +94,15 @@ main {
   }
 }
 
+/* Fluid typography for headings */
+h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3.5vw, 3rem);
+}
+
 main > * {
   background: var(--bg-color);
   border: 1px solid var(--matrix-green);
