@@ -1,6 +1,13 @@
+import dynamic from "next/dynamic";
+
 import Hello from "../components/Hello";
 
 import Head from "next/head";
+
+// Only render CodeRain on the client
+const CodeRain = dynamic(() => import("../components/CodeRain"), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
@@ -24,6 +31,7 @@ export default function Home() {
           </li>
         </ul>
       </nav>
+      <CodeRain />
       <Hello />
       <main>
         <section aria-labelledby="intro">
