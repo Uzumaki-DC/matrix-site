@@ -1,3 +1,5 @@
+import Hello from "../components/Hello";
+
 import Head from "next/head";
 
 export default function Home() {
@@ -22,7 +24,7 @@ export default function Home() {
           </li>
         </ul>
       </nav>
-
+      <Hello />
       <main>
         <section aria-labelledby="intro">
           <h2 id="intro">Introduction</h2>
