@@ -35,11 +35,18 @@ nav a {
 /* Flexbox nav */
 nav ul {
   display: flex;
+  flex-direction: column;
   list-style: none;
   gap: 1rem;
   padding: 0.5rem;
   background: #000;
   margin: 0;
+}
+/* Horizontal nav on viewports ≥ 640px */
+@media (min-width: 640px) {
+  nav ul {
+    flex-direction: row; /* row layout for wider screens */
+  }
 }
 
 nav li {
@@ -77,6 +84,13 @@ main {
 @media (min-width: 1024px) {
   main {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 4 columns on viewports ≥ 1280px */
+@media (min-width: 1280px) {
+  main {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
