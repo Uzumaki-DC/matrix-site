@@ -109,3 +109,47 @@ main > * {
   padding: var(--padding);
   color: var(--text-color);
 }
+
+/* Container covers the viewport */
+.code-rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(50, 1fr);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Individual characters */
+.rain-char {
+  color: var(--matrix-green);
+  font-family: monospace;
+  opacity: 0;
+  animation: fall linear infinite;
+}
+
+/* Define your fall animation */
+@keyframes fall {
+  0% {
+    transform: translateY(-100%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* Stagger durations & delays for variation */
+.rain-char:nth-child(5n) {
+  animation-duration: 4s;
+  animation-delay: 0s;
+}
+.rain-char:nth-child(5n + 1) {
+  animation-duration: 5s;
+  animation-delay: 1s;
+}
+/* (Add more nth-child rules as desired) */

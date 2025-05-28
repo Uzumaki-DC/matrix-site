@@ -10,5 +10,11 @@
     "files": [
       "static/chunks/_pages-dir-browser_node_modules_next_dist_pages__error_js.js"
     ]
+  },
+  "pages\\index.js -> ../components/CodeRain": {
+    "id": "pages\\index.js -> ../components/CodeRain",
+    "files": [
+      "static/chunks/_pages-dir-browser_components_CodeRain_js.js"
+    ]
   }
 }
