@@ -1,25 +1,36 @@
 // components/CodeRain.js
 import { useRef, useEffect } from "react";
 
-export default function CodeRain() {
+export default function CodeRain({ active = true }) {
   const canvasRef = useRef(null);
+  const activeRef = useRef(active);
+  const dropsRef = useRef([]);
   const fontSize = 15;
   const chars =
     "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
+  // Keep activeRef in sync
+  useEffect(() => {
+    activeRef.current = active;
+  }, [active]);
+
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
-    let drops = [];
 
     function resize() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       const cols = Math.floor(canvas.width / fontSize);
-      drops = Array(cols).fill(1);
+      dropsRef.current = Array(cols).fill(1);
     }
 
-    function draw() {
+    function animate() {
+      // Always request next frame
+      requestAnimationFrame(animate);
+      if (!activeRef.current) return;
+
+      const drops = dropsRef.current;
       ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = "#0F0";
@@ -33,13 +44,11 @@ export default function CodeRain() {
         ctx.fillText(text, posX, posY);
         drops[x] = posY > canvas.height && Math.random() > 0.975 ? 0 : y + 1;
       });
-
-      requestAnimationFrame(draw);
     }
 
     window.addEventListener("resize", resize);
     resize();
-    draw();
+    animate();
 
     return () => {
       window.removeEventListener("resize", resize);

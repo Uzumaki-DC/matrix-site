@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import dynamic from "next/dynamic";
 
 import Hello from "../components/Hello";
@@ -10,6 +12,7 @@ const CodeRain = dynamic(() => import("../components/CodeRain"), {
 });
 
 export default function Home() {
+  const [rainActive, setRainActive] = useState(true);
   return (
     <>
       <Head>
@@ -31,8 +34,26 @@ export default function Home() {
           </li>
         </ul>
       </nav>
-      <CodeRain />
+
+      <CodeRain active={rainActive} />
       <Hello />
+
+      <button
+        onClick={() => setRainActive(!rainActive)}
+        style={{
+          position: "fixed",
+          top: "1rem",
+          right: "1rem",
+          padding: "0.5rem 1rem",
+          background: "#000",
+          color: "#0F0",
+          border: "1px solid #0F0",
+          cursor: "pointer",
+        }}
+      >
+        {rainActive ? "Stop Rain" : "Start Rain"}
+      </button>
+
       <main>
         <section aria-labelledby="intro">
           <h2 id="intro">Introduction</h2>
