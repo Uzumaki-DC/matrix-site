@@ -1,155 +1,100 @@
+/* styles/globals.css */
+
 :root {
-  --matrix-green: #00ff00;
-  --bg-color: #000000;
-  --text-color: var(--matrix-green);
-  --padding: 1rem;
+  --matrix-green: #0f0;
+  --bg-color: #000;
 }
 
-/* styles/globals.css */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   background: var(--bg-color);
-  color: var(--text-color);
-  font-family: sans-serif;
-  margin: 0;
-  padding: var(--padding);
-}
-
-main section,
-main article,
-main aside {
-  background: #000;
-  border: 1px solid var(--matrix-green);
   color: var(--matrix-green);
+  font-family: monospace;
+  overflow-x: hidden;
 }
 
-nav a {
-  display: inline-block;
-  padding: 0.75rem 1rem; /* larger hit area */
-  margin: 0.25rem; /* spacing between links */
-}
-/* Flexbox nav */
-nav ul {
+/* Header / Navigation */
+.nav {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-color);
+  padding: 0.5rem;
+}
+.nav ul {
+  display: flex;
   list-style: none;
   gap: 1rem;
-  padding: 0.5rem;
-  background: #000;
-  margin: 0;
 }
-/* Horizontal nav on viewports ≥ 640px */
-@media (min-width: 640px) {
-  nav ul {
-    flex-direction: row; /* row layout for wider screens */
-  }
-}
-
-nav li {
-  margin: 0; /* reset any default list margins/padding */
-}
-
-nav a {
+.nav a {
   color: var(--matrix-green);
   text-decoration: none;
-  padding: 0.5rem 1rem; /* expand touch target */
-  display: inline-block; /* so padding applies */
+  padding: 0.5rem 1rem;
 }
-
-nav a:hover,
-nav a:focus {
+.nav a:hover {
   text-decoration: underline;
 }
 
-main {
-  display: grid;
-  gap: 1rem;
-
-  /* by default, one column */
-  grid-template-columns: 1fr;
+/* Toggle Button (Start/Stop Rain & Sign Out) */
+.toggle-btn {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-color);
+  color: var(--matrix-green);
+  border: 1px solid var(--matrix-green);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+.toggle-btn:hover {
+  background: var(--matrix-green);
+  color: var(--bg-color);
 }
 
-/* two columns on medium screens and up */
+/* Main Content Grid */
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 1rem;
+}
 @media (min-width: 640px) {
   main {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
-/* three columns on large screens and up */
 @media (min-width: 1024px) {
   main {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* 4 columns on viewports ≥ 1280px */
-@media (min-width: 1280px) {
-  main {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-/* Fluid typography for headings */
-h1 {
-  font-size: clamp(2rem, 5vw, 4rem);
-}
-
-h2 {
-  font-size: clamp(1.5rem, 3.5vw, 3rem);
-}
-
-main > * {
-  background: var(--bg-color);
+/* Card Styling */
+.card {
+  background: rgba(0, 0, 0, 0.75);
   border: 1px solid var(--matrix-green);
-  padding: var(--padding);
-  color: var(--text-color);
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
-
-/* Container covers the viewport */
-.code-rain {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: repeat(50, 1fr);
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* Individual characters */
-.rain-char {
+.card h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
   color: var(--matrix-green);
-  font-family: monospace;
-  opacity: 0;
-  animation: fall linear infinite;
+}
+.card p {
+  color: var(--matrix-green);
 }
 
-/* Define your fall animation */
-@keyframes fall {
-  0% {
-    transform: translateY(-100%);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh);
-    opacity: 0;
-  }
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background: var(--bg-color);
+  border-top: 1px solid var(--matrix-green);
 }
-
-/* Stagger durations & delays for variation */
-.rain-char:nth-child(5n) {
-  animation-duration: 4s;
-  animation-delay: 0s;
-}
-.rain-char:nth-child(5n + 1) {
-  animation-duration: 5s;
-  animation-delay: 1s;
-}
-/* (Add more nth-child rules as desired) */

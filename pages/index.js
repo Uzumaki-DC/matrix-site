@@ -1,10 +1,8 @@
-import { useState } from "react";
-
-import dynamic from "next/dynamic";
-
-import Hello from "../components/Hello";
-
+// pages/index.js
 import Head from "next/head";
+import { useState } from "react";
+import dynamic from "next/dynamic";
+import Hello from "../components/Hello";
 
 // Only render CodeRain on the client
 const CodeRain = dynamic(() => import("../components/CodeRain"), {
@@ -13,6 +11,7 @@ const CodeRain = dynamic(() => import("../components/CodeRain"), {
 
 export default function Home() {
   const [rainActive, setRainActive] = useState(true);
+
   return (
     <>
       <Head>
@@ -21,57 +20,37 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
-      <nav aria-label="Main navigation">
-        <ul>
-          <li>
-            <a href="/">Home</a>
-          </li>
-          <li>
-            <a href="/features">Features</a>
-          </li>
-          <li>
-            <a href="/about">About</a>
-          </li>
-        </ul>
-      </nav>
-
+      {/* Matrix Rain Effect */}
       <CodeRain active={rainActive} />
+
+      {/* Greeting Box */}
       <Hello />
 
-      <button
-        onClick={() => setRainActive(!rainActive)}
-        style={{
-          position: "fixed",
-          top: "1rem",
-          right: "1rem",
-          padding: "0.5rem 1rem",
-          background: "#000",
-          color: "#0F0",
-          border: "1px solid #0F0",
-          cursor: "pointer",
-        }}
-      >
+      {/* Toggle Rain Button */}
+      <button onClick={() => setRainActive(!rainActive)} className="toggle-btn">
         {rainActive ? "Stop Rain" : "Start Rain"}
       </button>
 
+      {/* Main Content Grid */}
       <main>
-        <section aria-labelledby="intro">
+        <section aria-labelledby="intro" className="card">
           <h2 id="intro">Introduction</h2>
           <p>Welcome to the Matrix-themed site prototype.</p>
         </section>
 
-        <article aria-labelledby="news">
+        <article aria-labelledby="news" className="card">
           <h2 id="news">Latest News</h2>
           <p>Placeholder for dynamic content.</p>
         </article>
 
-        <aside aria-labelledby="sidebar">
+        <aside aria-labelledby="sidebar" className="card">
           <h2 id="sidebar">Sidebar</h2>
           <p>Additional links or info.</p>
         </aside>
       </main>
 
-      <footer>
+      {/* Footer */}
+      <footer className="footer">
         <p>© 2025 Matrix Site</p>
       </footer>
     </>
