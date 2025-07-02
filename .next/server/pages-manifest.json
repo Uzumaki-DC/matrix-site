@@ -3,5 +3,8 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/feed": "pages/feed.js"
+  "/feed": "pages/feed.js",
+  "/create-post": "pages/create-post.js",
+  "/auth/signin": "pages/auth/signin.js",
+  "/profile": "pages/profile.js"
 }
