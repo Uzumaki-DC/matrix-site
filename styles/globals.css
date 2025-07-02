@@ -1,4 +1,7 @@
 /* styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --matrix-green: #0f0;
@@ -97,4 +100,42 @@ main {
   padding: 1rem;
   background: var(--bg-color);
   border-top: 1px solid var(--matrix-green);
+}
+
+/* Dedicated button style for rain toggle */
+.rain-toggle {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-color);
+  color: var(--matrix-green);
+  border: 1px solid var(--matrix-green);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 10;
+}
+.rain-toggle:hover {
+  background: var(--matrix-green);
+  color: var(--bg-color);
+}
+/* Top-right corner greeting and sign out */
+.top-right-auth {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 20;
+}
+
+.auth-btn {
+  background: var(--bg-color);
+  color: var(--matrix-green);
+  border: 1px solid var(--matrix-green);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.auth-btn:hover {
+  background: var(--matrix-green);
+  color: var(--bg-color);
 }

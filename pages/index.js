@@ -27,7 +27,10 @@ export default function Home() {
       <Hello />
 
       {/* Toggle Rain Button */}
-      <button onClick={() => setRainActive(!rainActive)} className="toggle-btn">
+      <button
+        onClick={() => setRainActive(!rainActive)}
+        className="rain-toggle"
+      >
         {rainActive ? "Stop Rain" : "Start Rain"}
       </button>
 

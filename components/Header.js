@@ -25,22 +25,34 @@ export default function Header() {
               About
             </Link>
           </li>
+          {session && (
+            <li>
+              <Link href="/create-post" className="nav-link">
+                Create Post
+              </Link>
+              <Link href="/feed">Feed</Link>
+              <Link href="/profile">Profile</Link>
+            </li>
+          )}
         </ul>
       </nav>
-      <div>
-        {!session ? (
+
+      {!session ? (
+        <div style={{ display: "flex", gap: "1rem" }}>
           <Link href="/auth/signin" className="nav-link">
             Sign In
           </Link>
-        ) : (
-          <button
-            onClick={() => supabase.auth.signOut()}
-            className="toggle-btn"
-          >
+          <Link href="/auth/signup" className="nav-link">
+            Sign Up
+          </Link>
+        </div>
+      ) : (
+        <div className="top-right-auth">
+          <button onClick={() => supabase.auth.signOut()} className="auth-btn">
             Hello, {session.user.email} (Sign Out)
           </button>
-        )}
-      </div>
+        </div>
+      )}
     </header>
   );
 }
